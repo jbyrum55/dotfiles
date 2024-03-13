@@ -5,12 +5,12 @@ if [[ "$(id -u)" -eq 0 ]]; then
 	# check if brew is package manager
 	# if apt is package manager and you run which apt it will specify a path to where its stored
 	echo $(which apt)
-	if [[ -n "$(which brew)" ]]; then
-		echo "brew is available"
+	if [[ -n "$(which apt)" ]]; then
+		echo "apt is available"
 		# Check and install bind-tools if not installed
 		if ! dpkg -s bind9utils &> /dev/null; then
 			echo "Installing bind-tools..."
-			brew install -y bind9utils
+			apt install -y bind9utils
 		else
 			echo "bind-tools is already installed."
 		fi
@@ -18,7 +18,7 @@ if [[ "$(id -u)" -eq 0 ]]; then
 		# Check and install nmap if not installed
 		if ! dpkg -s nmap &> /dev/null; then
 			echo "Installing nmap..."
-			brew install -y nmap
+			apt install -y nmap
 		else
 			echo "nmap is already installed."
 		fi
@@ -36,7 +36,7 @@ if [[ "$(id -u)" -eq 0 ]]; then
 		# Check and install ninvaders if not installed
 		if ! dpkg -s ninvaders &> /dev/null; then
 			echo "Installing ninvaders..."
-			brew install -y ninvaders
+			apt install -y ninvaders
 		else
 			echo "ninvaders is already installed."
 		fi
