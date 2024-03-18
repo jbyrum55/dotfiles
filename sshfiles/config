@@ -1,0 +1,8 @@
+Host fry
+        User w692jxb
+        HostName fry.cs.wright.edu
+        IdentityFile /Users/jbyrum55/.ssh/ed25519
+        Port 22
+
+
+
