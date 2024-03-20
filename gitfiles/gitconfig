@@ -1,0 +1,8 @@
+[user]
+	name = Jason Byrum
+	email = byrum.11@wright.edu
+[core]
+	editor = nano
+	excludesfile = /home/jbyrum55/.gitignore_global
+[help]
+	autocorrect = 1
