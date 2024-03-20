@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# Check if running as root
+if [[ "$(id -u)" -eq 0 ]]; then
+    echo "Script is running as root, please run as a regular user" 1>&2
+    exit 1
+fi
+
+# Configure git settings
+git config --global user.name "Jason Byrum"
+git config --global user.email "byrum.11@wright.edu"
+git config --global core.editor "nano"
+git config --global core.excludesfile ~/.gitignore_global
+echo ".DS_Store" >> ~/.gitignore_global  # Add more ignored files if needed
+git config --global help.autocorrect 1
+
+# Copy .gitconfig to the Git repository
+cp ~/.gitconfig ./dotfiles/gitfiles/gitfiles/.gitconfig
+
+# Symbolic link .gitconfig to the user's home directory
+ln -sf /Users/jbyrum55/dotfiles/gitfiles/.gitconfig
+
+echo "Git configuration completed."
+
