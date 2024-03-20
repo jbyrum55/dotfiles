@@ -1,3 +1,4 @@
+# Used ChatGPT and Classroom resoureces
 #!/bin/bash
 
 # Check if running as root
