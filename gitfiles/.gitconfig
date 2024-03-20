@@ -12,14 +12,12 @@ git config --global user.name "Jason Byrum"
 git config --global user.email "byrum.11@wright.edu"
 git config --global core.editor "nano"
 git config --global core.excludesfile ~/.gitignore_global
-echo ".DS_Store" >> ~/.gitignore_global  # Add more ignored files if needed
 git config --global help.autocorrect 1
 
-# Copy .gitconfig to the Git repository
-cp ~/.gitconfig ./dotfiles/gitfiles/gitfiles/.gitconfig
-
-# Symbolic link .gitconfig to the user's home directory
-ln -sf /Users/jbyrum55/dotfiles/gitfiles/.gitconfig
+# Copy default gitignore_global if exists
+if [ -e "$(pwd)/gitignore_global" ]; then
+    cp "$(pwd)/gitignore_global" ~/.gitignore_global
+fi
 
 echo "Git configuration completed."
 
