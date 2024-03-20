@@ -1,5 +1,5 @@
 #!/bin/bash
-# Code snippets from ChatGpt
+# Code snippets from ChatGpt and Inclass
 if [[ "$(id -u)" -eq 0 ]]; then
 	echo "Script is running as root"
 	# check if brew is package manager
@@ -41,7 +41,7 @@ if [[ "$(id -u)" -eq 0 ]]; then
 			echo "ninvaders is already installed."
 		fi
 	else
-		echo "brew is not installed at the specified location."
+		echo "apt is not installed at the specified location."
 	fi
 		# install packages with brew
 else
