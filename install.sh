@@ -1,3 +1,4 @@
+# Code created with ChatGPT and Classroom Resources
 #!/bin/bash
 
 # Check if running as root
