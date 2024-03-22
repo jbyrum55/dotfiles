@@ -1,44 +1,49 @@
-# Used ChatGPT and Classroom resoureces
-#!/bin/bash
+# ChatGPT and Class Resources
+import os
 
-# Check if running as root
-if [[ "$(id -u)" -eq 0 ]]; then
-    echo "Script is running as root, please run as a regular user" 1>&2
-    exit 1
-fi
+def add_aliases():
+    return '''
+# Aliases
+alias c="clear"
+alias cl="clear"
+alias ckear="clear"
+alias clr="clear"
+alias .="cd .."
+'''
 
-# Install any additional packages required for bashrc configurations
-# (if needed)
+def set_prompt_color():
+    return '''
+# Set prompt color
+PS1='\\[\\e[0;32m\\]\\u\\[\\e[0m\\]\\[\\e[0;32m\\]@\\h\\[\\e[0m\\]:\\[\\e[0;34m\\]\\w\\[\\e[0m\\]\\$ '
+'''
 
-# Create .bashrc with aliases and configurations
-cat << 'EOF' > ~/.bashrc
-# Two useful aliases
-alias cls='clear'
-alias ll='ls -alF'
+def set_ls_colors():
+    return '''
+# Set LS_COLORS
+eval "$(dircolors -b)"
+export LS_COLORS='di=34:'$LS_COLORS
+alias ls='ls --color=auto'
+'''
 
-# Awesome bash aliases
-# Add your awesome bash aliases here
+def replace_dir_color():
+    return '''
+# Replace the directory color in PS1
+BLUE="\\[\\033[0;34m\\]"
+PS1="${PS1//\\[\\e[0;34m\\]/$BLUE}"
+'''
 
-# 30 okay aliases
-# Add your okay aliases here
+def append_to_bashrc(content):
+    home_dir = os.path.expanduser("~")
+    bashrc_path = os.path.join(home_dir, ".bashrc")
+    with open(bashrc_path, "a") as bashrc_file:
+        bashrc_file.write(content)
 
-# 70 more aliases
-# Add your more aliases here
+def setup_bashrc():
+    content = add_aliases() + set_prompt_color() + set_ls_colors() + replace_dir_color()
+    append_to_bashrc(content)
+    print("Content added to .bashrc file.")
+    print(".bashrc successfully setup!")
 
-# Grab something cool from The Ultimate B.A. .bashrc file
-# Add cool configurations from The Ultimate B.A. .bashrc file here
-
-# Source global definitions
-if [ -f /etc/bashrc ]; then
-    . /etc/bashrc
-fi
-EOF
-
-# Copy .bashrc to the Git repository
-cp ~/.bashrc /path/to/dotfiles/.bashrc
-
-# Symbolic link .bashrc to the user's home directory
-ln -sf /path/to/dotfiles/.bashrc ~/.bashrc
-
-echo "Bashrc configuration completed."
+# Call the function to setup .bashrc
+setup_bashrc()
 
